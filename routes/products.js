@@ -26,7 +26,7 @@ router.get('/:id', async (req, res) =>{
     }
     const one = await Product.findOne({where: {id: +id}});
 
-    if(one.length === 0){
+    if(one === null){
         res.json({status: 'ERR', message: 'Product not found'});
         return
     }
