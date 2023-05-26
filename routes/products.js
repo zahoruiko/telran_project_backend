@@ -24,14 +24,14 @@ router.get('/:id', async (req, res) =>{
         res.json({status: 'ERR', message: 'wrong id'}); 
         return  
     }
-    const all = await Product.findAll({where: {id: +id}});
+    const one = await Product.findOne({where: {id: +id}});
 
-    if(all.length === 0){
-        res.json({status: 'ERR', message: 'product not found'});
+    if(one === null){
+        res.json({status: 'ERR', message: 'Product not found'});
         return
     }
     
-    res.json(all);
+    res.json(one);
 })
 
 
